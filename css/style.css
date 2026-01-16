@@ -7,6 +7,7 @@ body {
   color: #222;
   line-height: 1.9;
   background: #fff;
+  overflow-x: hidden; /* 防止移动端出现左右晃动 */
 }
 
 a {
@@ -15,97 +16,89 @@ a {
 }
 
 /* =========================
-   Header
+   Header (带悬停方块效果)
 ========================= */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 6%; /* 取消上下padding，由a标签的padding撑开，保证点击区域大 */
-  height: 80px;   /* 固定高度方便对齐 */
+  padding: 0 6%;
+  height: 80px;
   border-bottom: 1px solid #eee;
   background: #fff;
+  position: relative;
+  z-index: 100;
 }
 
 .nav {
   display: flex;
-  height: 100%; /* 让导航组跟header一样高 */
+  height: 100%;
 }
 
 .nav a {
   display: flex;
   align-items: center;
-  padding: 0 20px;     /* 左右间距形成方块感 */
-  margin-left: 8px;    /* 稍微留一点间隙，如果不想要间隙可以设为0 */
+  padding: 0 20px;
+  margin-left: 8px;
   font-size: 14px;
-  height: 100%;        /* 撑满header高度 */
-  transition: all 0.3s ease; /* 让颜色变化更平滑 */
-  position: relative;
+  height: 100%;
+  transition: all 0.3s ease;
 }
 
-/* 鼠标悬停时的“颜色方块”效果 */
 .nav a:hover {
-  background-color: #222; /* 悬停时的方块颜色 */
-  color: #fff;            /* 文字变为白色 */
+  background-color: #222;
+  color: #fff;
 }
-
 
 /* =========================
-   Logo 样式修复版
+   Logo 样式
 ========================= */
 .logo {
-  margin: 0;           /* 必须加：清除标题默认自带的上下大间距 */
+  margin: 0;
   font-size: 20px;
   font-weight: 600;
-  display: flex;       /* 开启弹性布局 */
 }
 
 .logo a {
   display: flex;
   align-items: center;
   gap: 12px;
-  text-decoration: none;
-  color: #222;
-  height: 100%; /* 建议添加：确保点击区域和 header 一样高 */
+  height: 80px; /* 与header等高确保点击区域 */
 }
 
-
-/* 强制控制图片大小 */
 .logo-img {
   width: 40px;
   height: 40px;
   object-fit: cover;
   display: block;
   border-radius: 4px;
-  image-rendering: -webkit-optimize-contrast; /* 2026年优化建议：增强图片清晰度 */
+  image-rendering: -webkit-optimize-contrast;
 }
 
 /* =========================
-   Hero 增强版（增加动效和遮罩）
+   Hero 呼吸动画版
 ========================= */
 .hero {
-  height: 90vh; /* 稍微加高一点，更有视觉冲击力 */
-  overflow: hidden; /* 必须，防止内部图片放大时溢出 */
+  height: 90vh;
+  overflow: hidden;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  background-color: #f9f9f9; /* 图片加载前的背景色 */
+  background-color: #f9f9f9;
 }
 
-/* 背景图层：实现缓慢放大的“呼吸感” */
 .hero::before {
   content: "";
   position: absolute;
   top: 0; left: 0; width: 100%; height: 100%;
-  /* 加上渐变遮罩，让白色文字更清晰 */
   background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3)), 
               url("/morisawa5628/images/hero.jpg");
   background-size: cover;
   background-position: center;
   z-index: 1;
-  animation: heroZoom 15s infinite alternate ease-in-out; /* 呼吸动画 */
+  animation: heroZoom 15s infinite alternate ease-in-out;
 }
 
 @keyframes heroZoom {
@@ -115,30 +108,58 @@ a {
 
 .hero-text {
   position: relative;
-  z-index: 2; /* 确保文字在背景图上方 */
+  z-index: 2;
   max-width: 800px;
   padding: 0 20px;
 }
 
 .hero-text h2 {
-  font-size: 42px; /* 标题加大 */
-  letter-spacing: 0.1em; /* 增加字间距，更具日本设计感 */
+  font-size: 42px;
+  letter-spacing: 0.1em;
   margin-bottom: 24px;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.2); /* 增加文字阴影，保证易读性 */
+  color: #fff;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.hero-text p {
+  font-size: 18px;
+  color: #fff;
+  opacity: 0.9;
 }
 
 /* =========================
-   Section 细节微调
+   Section 交叉布局 (左字右图 / 左图右字)
 ========================= */
-.section h3 {
-  display: inline-block;
-  position: relative;
-  padding-bottom: 15px;
-  margin-bottom: 50px;
+.section {
+  padding: 120px 10%;
 }
 
-/* 标题下方的精致线条 */
-.section h3::after {
+.content-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 80px;
+}
+
+/* 实现左右交替的关键类 */
+.content-row.reverse {
+  flex-direction: row-reverse;
+}
+
+.text-box, .image-box {
+  flex: 1;
+}
+
+.text-box h3 {
+  display: inline-block;
+  font-size: 28px;
+  margin-bottom: 30px;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+/* 标题装饰线 */
+.text-box h3::after {
   content: "";
   position: absolute;
   bottom: 0;
@@ -148,59 +169,63 @@ a {
   background: #222;
 }
 
-.section p {
-  line-height: 2.2; /* 增加行高，让阅读更轻松 */
-  color: #444;
+.text-box h3 span {
+  display: block;
+  font-size: 14px;
+  color: #888;
+  font-weight: normal;
+  margin-top: 8px;
 }
 
-/* 浅色背景 */
+.text-box p {
+  line-height: 2.2;
+  color: #444;
+  font-size: 15px;
+}
+
+.image-box img {
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+  border-radius: 2px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+/* 浅色背景板块 */
 .bg-light {
   background: #fafafa;
 }
 
 /* =========================
-   Company table
+   其他通用组件 (Table, Button, Form)
 ========================= */
 .company-table {
   border-collapse: collapse;
   margin-top: 32px;
+  width: 100%;
 }
 
 .company-table th {
   text-align: left;
-  padding: 10px 24px 10px 0;
+  padding: 15px 24px 15px 0;
   font-weight: normal;
-  white-space: nowrap;
+  border-bottom: 1px solid #eee;
+  width: 30%;
 }
 
 .company-table td {
-  padding: 10px 0;
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
 }
 
-/* =========================
-   Business
-========================= */
-.business-block {
-  max-width: 720px;
-  margin-bottom: 56px;
-}
-
-.business-block h4 {
-  font-size: 18px;
-  margin-bottom: 12px;
-  font-weight: 500;
-}
-
-/* =========================
-   Button
-========================= */
 .btn {
   display: inline-block;
   margin-top: 32px;
-  padding: 12px 36px;
+  padding: 14px 40px;
   border: 1px solid #222;
   font-size: 14px;
-  transition: background 0.3s, color 0.3s;
+  letter-spacing: 0.1em;
+  transition: all 0.3s;
 }
 
 .btn:hover {
@@ -208,9 +233,6 @@ a {
   color: #fff;
 }
 
-/* =========================
-   Contact form
-========================= */
 .contact-form {
   max-width: 600px;
   margin-top: 40px;
@@ -232,6 +254,7 @@ a {
   border: 1px solid #222;
   background: #fff;
   cursor: pointer;
+  transition: 0.3s;
 }
 
 .contact-form button:hover {
@@ -243,15 +266,15 @@ a {
    Footer
 ========================= */
 .footer {
-  padding: 48px 0;
+  padding: 60px 0;
   text-align: center;
   font-size: 12px;
-  color: #666;
+  color: #888;
   border-top: 1px solid #eee;
 }
 
 /* =========================
-   Scroll animation
+   动画与移动端适配
 ========================= */
 .fade-up {
   opacity: 0;
@@ -262,4 +285,13 @@ a {
 .fade-up.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .header { height: auto; padding: 20px 6%; flex-direction: column; gap: 20px; }
+  .nav a { padding: 10px; margin-left: 0; }
+  .hero-text h2 { font-size: 28px; }
+  .section { padding: 80px 6%; }
+  .content-row, .content-row.reverse { flex-direction: column; gap: 40px; }
+  .image-box img { height: 300px; }
 }
