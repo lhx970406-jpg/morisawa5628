@@ -80,57 +80,77 @@ a {
   image-rendering: -webkit-optimize-contrast; /* 2026年优化建议：增强图片清晰度 */
 }
 
-
 /* =========================
-   Hero
+   Hero 增强版（增加动效和遮罩）
 ========================= */
 .hero {
-  height: 80vh;
-  background-image: url("/morisawa5628/images/hero.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
+  height: 90vh; /* 稍微加高一点，更有视觉冲击力 */
+  overflow: hidden; /* 必须，防止内部图片放大时溢出 */
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: #fff;
+  background-color: #f9f9f9; /* 图片加载前的背景色 */
 }
 
+/* 背景图层：实现缓慢放大的“呼吸感” */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  /* 加上渐变遮罩，让白色文字更清晰 */
+  background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3)), 
+              url("/morisawa5628/images/hero.jpg");
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+  animation: heroZoom 15s infinite alternate ease-in-out; /* 呼吸动画 */
+}
+
+@keyframes heroZoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.1); }
+}
 
 .hero-text {
-  margin-left: 10%;
-  max-width: 600px;
+  position: relative;
+  z-index: 2; /* 确保文字在背景图上方 */
+  max-width: 800px;
+  padding: 0 20px;
 }
 
 .hero-text h2 {
-  font-size: 36px;
-  margin-bottom: 20px;
-  font-weight: 500;
-}
-
-.hero-text p {
-  font-size: 16px;
-  color: #555;
+  font-size: 42px; /* 标题加大 */
+  letter-spacing: 0.1em; /* 增加字间距，更具日本设计感 */
+  margin-bottom: 24px;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.2); /* 增加文字阴影，保证易读性 */
 }
 
 /* =========================
-   Section
+   Section 细节微调
 ========================= */
-.section {
-  padding: 120px 10%;
+.section h3 {
+  display: inline-block;
+  position: relative;
+  padding-bottom: 15px;
+  margin-bottom: 50px;
 }
 
-.section h3 {
-  font-size: 28px;
-  margin-bottom: 40px;
-  font-weight: 500;
+/* 标题下方的精致线条 */
+.section h3::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 2px;
+  background: #222;
 }
 
 .section p {
-  max-width: 720px;
-  font-size: 15px;
+  line-height: 2.2; /* 增加行高，让阅读更轻松 */
+  color: #444;
 }
 
 /* 浅色背景 */
