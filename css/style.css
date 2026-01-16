@@ -50,28 +50,36 @@ a {
 }
 
 
-/* Logo 容器：确保内部链接是弹性布局 */
-.logo a {
-  display: flex;       /* 开启弹性布局 */
-  align-items: center; /* 确保图片和文字上下居中对齐 */
-  gap: 12px;           /* 图片和文字之间的距离，可以根据喜好调整 */
-  text-decoration: none;
-}
-
-/* 强制 Logo 图片变为正方形并控制大小 */
-.logo-img {
-  width: 36px;         /* 你可以调整这个数值来改变 logo 大小 */
-  height: 36px;        /* 宽高一致，确保是正方形 */
-  object-fit: cover;   /* 如果原图不是正方形，此属性会裁剪中间部分以填满方块 */
-  border-radius: 4px;  /* 可选：给正方形加一点点圆角，看起来更高级 */
-}
-
-/* 文字样式保持不变或微调 */
-.logo span {
+/* =========================
+   Logo 样式修复版
+========================= */
+.logo {
+  margin: 0;           /* 必须加：清除标题默认自带的上下大间距 */
   font-size: 20px;
   font-weight: 600;
-  color: #222;
+  display: flex;       /* 开启弹性布局 */
 }
+
+.logo a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: #222;
+  height: 100%; /* 建议添加：确保点击区域和 header 一样高 */
+}
+
+
+/* 强制控制图片大小 */
+.logo-img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  display: block;
+  border-radius: 4px;
+  image-rendering: -webkit-optimize-contrast; /* 2026年优化建议：增强图片清晰度 */
+}
+
 
 /* =========================
    Hero

@@ -2,19 +2,17 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <!-- 必须添加：确保网页在手机和 iPad 上不会缩成很小的字体 -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
   <title>株式会社盛澤｜公式サイト</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
-
+<body> <!-- 补上缺失的 body 标签 -->
 
 <header class="header">
   <h1 class="logo">
     <a href="index.html">
-      <!-- 只要确保 images 文件夹里有 logo.png 即可 -->
-      <img src="/morisawa5628/images/morisawalogo.jpg" alt="株式会社盛澤">
+      <!-- 关键修复：添加了 class="logo-img" -->
+      <img src="/morisawa5628/images/morisawalogo.jpg" alt="株式会社盛澤" class="logo-img">
       <span>株式会社盛澤</span>
     </a>
   </h1>
@@ -27,42 +25,35 @@
   </nav>
 </header>
 
-
-
 <section class="hero fade-up">
-<!-- 背景图片：1920×1080（静谧 / 抽象 / 建筑 / 光影） -->
-<div class="hero-text">
-<h2>静かに、確実に、価値を届ける。</h2>
-<p>ECを通じて、信頼と品質を日常へ。</p>
-</div>
+  <div class="hero-text">
+    <h2>静かに、確実に、価値を届ける。</h2>
+    <p>ECを通じて、信頼と品质を日常へ。</p>
+  </div>
 </section>
-
 
 <section class="section fade-up">
-<h3>ABOUT US</h3>
-<p>
-株式会社盛澤は、国内主要ECプラットフォームを通じて
-商品の販売・運営を行う企業です。
-日々変化するオンライン市場の中で、
-誠実な運営と確実な対応を何よりも大切にしています。
-</p>
+  <h3>ABOUT US</h3>
+  <p>
+    株式会社盛澤は、国内主要ECプラットフォームを通じて
+    商品の販売・運営を行う企業です。
+    日々変化するオンライン市場の中で、
+    誠実な運営と確実な対応を何よりも大切にしています。
+  </p>
 </section>
-
 
 <section class="section bg-light fade-up">
-<h3>OUR BUSINESS</h3>
-<p>
-Amazon、楽天市場、Yahoo!ショッピング、au PAY マーケットなど、
-日本国内の主要ECモールにて販売事業を展開しています。
-</p>
-<a class="btn" href="business.html">事業内容を見る</a>
+  <h3>OUR BUSINESS</h3>
+  <p>
+    Amazon、楽天市場、Yahoo!ショッピング、au PAY マーケットなど、
+    日本国内の主要ECモールにて販売事業を展開しています。
+  </p>
+  <a class="btn" href="business.html">事業内容を見る</a>
 </section>
 
-
 <footer class="footer">
-<p>© 株式会社盛澤</p>
+  <p>© 株式会社盛澤</p>
 </footer>
-
 
 <script src="js/script.js"></script>
 </body>
