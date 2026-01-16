@@ -21,19 +21,32 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 24px 6%;
+  padding: 0 6%; /* 取消上下padding，由a标签的padding撑开，保证点击区域大 */
+  height: 80px;   /* 固定高度方便对齐 */
   border-bottom: 1px solid #eee;
   background: #fff;
 }
 
-.logo {
-  font-size: 20px;
-  font-weight: 600;
+.nav {
+  display: flex;
+  height: 100%; /* 让导航组跟header一样高 */
 }
 
 .nav a {
-  margin-left: 28px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;     /* 左右间距形成方块感 */
+  margin-left: 8px;    /* 稍微留一点间隙，如果不想要间隙可以设为0 */
   font-size: 14px;
+  height: 100%;        /* 撑满header高度 */
+  transition: all 0.3s ease; /* 让颜色变化更平滑 */
+  position: relative;
+}
+
+/* 鼠标悬停时的“颜色方块”效果 */
+.nav a:hover {
+  background-color: #222; /* 悬停时的方块颜色 */
+  color: #fff;            /* 文字变为白色 */
 }
 
 /* =========================
