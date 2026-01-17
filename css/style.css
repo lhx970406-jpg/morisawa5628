@@ -388,6 +388,77 @@ a {
   border-top: 1px solid #eee;
 }
 
+/* 业务页面专属装饰 */
+.section-title {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.section-title h3 {
+    font-size: 32px;
+    letter-spacing: 0.1em;
+}
+
+.section-title h3 span {
+    display: block;
+    font-size: 14px;
+    color: #87CEEB; /* 使用您的天蓝色 */
+    margin-top: 10px;
+}
+
+/* 业务编号样式 */
+.service-num {
+    font-size: 48px;
+    font-weight: 800;
+    color: rgba(135, 206, 235, 0.2); /* 浅色大数字作为背景感 */
+    font-family: 'Arial', sans-serif;
+    display: block;
+    margin-bottom: -20px;
+}
+
+/* 文字盒子的细节调整 */
+.text-box h4 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    position: relative;
+    padding-left: 0;
+    color: #333;
+}
+
+/* 图片阴影和效果 */
+.image-box img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 12px; /* 圆角化 */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    transition: transform 0.5s ease;
+}
+
+.image-box img:hover {
+    transform: scale(1.03); /* 鼠标悬停微动 */
+}
+
+/* 页面间距增加 */
+.content-row {
+    padding: 60px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.content-row:last-child {
+    border-bottom: none;
+}
+
+/* 适配移动端 */
+@media (max-width: 768px) {
+    .content-row {
+        gap: 30px;
+    }
+    .service-num {
+        font-size: 36px;
+    }
+}
+
 /* =========================
    动画与移动端适配 (未修改)
 ========================= */
