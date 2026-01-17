@@ -258,33 +258,123 @@ a {
   color: #fff;
 }
 
+/* =========================
+   联系表单高级化 (替换原有 .contact-form 部分)
+========================= */
+
+/* 表单整体容器 */
 .contact-form {
-  max-width: 600px;
-  margin-top: 40px;
+  max-width: 700px;
+  margin: 40px auto 0; /* 居中 */
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 15px; /* 圆角 */
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05); /* 柔和的阴影 */
+  border: 1px solid #f0f0f0;
 }
 
-.contact-form input,
+/* 表单中的每一行容器 */
+.form-group {
+  margin-bottom: 25px;
+  text-align: left;
+}
+
+/* 标签样式 */
+.form-group label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 10px;
+  font-size: 15px;
+  color: #333;
+}
+
+/* 必填项红色小标签 */
+.badge-required {
+  background: #ff4d4f;
+  color: #fff;
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
+/* 输入框和文本域通用样式 */
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form select,
 .contact-form textarea {
   width: 100%;
-  padding: 14px;
-  margin-bottom: 18px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
+  padding: 15px;
+  font-size: 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #fafafa;
+  transition: all 0.3s ease;
+  box-sizing: border-box; /* 防止撑破容器 */
+  font-family: inherit;
 }
 
-.contact-form button {
-  padding: 12px 36px;
-  font-size: 14px;
-  border: 1px solid #222;
-  background: #fff;
-  cursor: pointer;
-  transition: 0.3s;
+/* 悬停和聚焦效果 */
+.contact-form input:hover,
+.contact-form textarea:hover {
+  border-color: #87CEEB; /* 使用您导航栏的天蓝色 */
 }
 
-.contact-form button:hover {
-  background: #222;
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  background-color: #fff;
+  border-color: #87CEEB;
+  box-shadow: 0 0 0 4px rgba(135, 206, 235, 0.1);
+}
+
+/* 提交按钮 */
+.contact-form button[type="submit"] {
+  display: block;
+  width: 100%;
+  max-width: 280px;
+  margin: 30px auto 0;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 700;
   color: #fff;
+  background-color: #333; /* 黑色基调显高级 */
+  border: none;
+  border-radius: 50px; /* 极圆按钮 */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.contact-form button[type="submit"]:hover {
+  background-color: #87CEEB; /* 悬停时变为天蓝色，与网页主题呼应 */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(135, 206, 235, 0.4);
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+  .contact-form {
+    padding: 25px 20px;
+  }
+}
+
+.map-wrapper {
+    width: 100%;
+    max-width: 1000px; /* 最大宽度 */
+    margin: 0 auto;
+    border: 1px solid #ddd;
+    border-radius: 8px; /* 圆角 */
+    overflow: hidden;
+    line-height: 0; /* 消除底部间隙 */
+}
+
+/* 确保地图在移动端也能正常显示 */
+@media (max-width: 768px) {
+    .map-wrapper iframe {
+        height: 300px; /* 手机端高度调小一点 */
+    }
 }
 
 /* =========================

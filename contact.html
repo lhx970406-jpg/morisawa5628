@@ -19,7 +19,7 @@
   </h1>
   <nav class="nav">
     <a href="index.html">ホーム</a>
-    <a href="services.html">事業内容</a>
+    <a href="business.html">事業内容</a>
     <a href="company.html">会社概要</a>
     <a href="contact.html">お問い合わせ</a>
   </nav>
@@ -28,20 +28,47 @@
 
 
 <section class="section fade-up">
-<h3>CONTACT</h3>
-<p>
-ご質問・ご相談などがございましたら、
-下記フォームよりお気軽にお問い合わせください。
-</p>
+  <div class="container">
+    <div class="contact-header">
+      <h3>CONTACT</h3>
+      <p class="contact-subtitle">ご質問・ご相談は、以下のフォームよりお気軽にお問い合わせください。</p>
+    </div>
 
+    <!-- フォーム本体 -->
+    <form class="contact-form" action="https://formspree.io" method="POST"> 
+      <!-- 注：mailtoの代わりにFormspreeなどを使うと、ブラウザ上で送信が完結します -->
+      
+      <div class="form-group">
+        <label for="name">お名前 <span class="badge-required">必須</span></label>
+        <input type="text" id="name" name="name" placeholder="例：盛 太郎" required>
+      </div>
 
-<form class="contact-form" action="mailto:morisawa.888@gmail.com" method="post" enctype="text/plain">
-<input type="text" name="name" placeholder="お名前">
-<input type="email" name="email" placeholder="メールアドレス">
-<textarea name="message" rows="6" placeholder="お問い合わせ内容"></textarea>
-<button type="submit">送信</button>
-</form>
+      <div class="form-group">
+        <label for="email">メールアドレス <span class="badge-required">必須</span></label>
+        <input type="email" id="email" name="email" placeholder="example@gmail.com" required>
+      </div>
+
+      <div class="form-group">
+        <label for="subject">お問い合わせ項目</label>
+        <select id="subject" name="subject">
+          <option value="EC運営について">ECモール運営について</option>
+          <option value="商品について">商品について</option>
+          <option value="採用・その他">その他</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="message">お問い合わせ内容 <span class="badge-required">必須</span></label>
+        <textarea id="message" name="message" rows="8" placeholder="ご自由に入力してください" required></textarea>
+      </div>
+
+      <div class="form-submit">
+        <button type="submit" class="submit-btn">内容を確認して送信する</button>
+      </div>
+    </form>
+  </div>
 </section>
+
 
 
 <footer class="footer">
