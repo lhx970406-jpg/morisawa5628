@@ -33,36 +33,39 @@ a {
 /* =========================
    Header 优化版 (天蓝色圆角效果)
 ========================= */
-.nav {
-  display: flex;
-  align-items: center; /* 确保导航在 Header 中垂直居中 */
-  height: 100%;
-}
-
+/* =========================
+   Header 修正版 (文字サイズアップ + 天ブルー)
+========================= */
 .nav a {
   display: flex;
   align-items: center;
   justify-content: center;
   
-  /* 1. 调整间距：不再使用 height: 100%，让它变成自适应文字的小方块 */
-  padding: 8px 20px; 
-  margin-left: 12px;
+  /* 1. 文字サイズを大きく (14px -> 16px) */
+  font-size: 18px; 
+  font-weight: 600; /* 少し太めにすると視認性が上がります */
+  color: #333;
   
-  font-size: 14px;
-  font-weight: 500;
-  color: #444; /* 默认文字颜色稍微浅一点，显得更高级 */
+  /* 2. 文字が大きくなった分、パディングを調整 */
+  padding: 10px 22px; 
+  margin-left: 10px;
   
-  /* 2. 准备圆角和平滑过渡 */
-  border-radius: 8px; /* 圆角设置 */
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* 增加一点回弹感的过渡 */
+  border-radius: 10px; /* 角丸も少し大きくして柔らかい印象に */
+  transition: all 0.3s ease;
 }
 
-/* 3. 悬停效果：黑色变天蓝色 */
+/* 3. ホバー時の色を天ブルーに */
 .nav a:hover {
-  background-color: #87CEEB; /* 天蓝色 (SkyBlue)，你可以根据喜好微调成 #00BFFF */
-  color: #fff;               /* 悬停时文字变白 */
-  transform: translateY(-2px); /* 悬停时轻微上浮，增加活泼感 */
-  box-shadow: 0 4px 12px rgba(135, 206, 235, 0.3); /* 淡淡的蓝色阴影 */
+  background-color: #87CEEB; /* 天ブルー */
+  color: #fff;
+  transform: translateY(-2px); /* ひょこっと浮く動き */
+}
+
+/* ロゴ横のテキストも少し大きくする場合 */
+.logo a span {
+  font-size: 22px; /* ロゴの文字サイズも調整 */
+  font-weight: 700;
+  color: #222;
 }
 
 
