@@ -42,7 +42,7 @@ a {
   justify-content: center;
   
   /* 1. 文字サイズを大きく (14px -> 16px) */
-  font-size: 18px; 
+  font-size: 16px; 
   font-weight: 600; /* 少し太めにすると視認性が上がります */
   color: #333;
   
