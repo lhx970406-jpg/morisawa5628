@@ -1,5 +1,5 @@
 /* =========================
-   基本设置
+   基本设置 (未修改)
 ========================= */
 body {
   margin: 0;
@@ -16,7 +16,7 @@ a {
 }
 
 /* =========================
-   Header (带悬停方块效果)
+   Header (整合了天蓝色圆角新样式)
 ========================= */
 .header {
   display: flex;
@@ -30,56 +30,39 @@ a {
   z-index: 100;
 }
 
-/* =========================
-   Header 优化版 (天蓝色圆角效果)
-========================= */
-/* =========================
-   Header 修正版 (文字サイズアップ + 天ブルー)
-========================= */
+.nav {
+  display: flex;
+  align-items: center; 
+  height: 100%;
+  flex-wrap: nowrap; /* 修复导航换行问题：强制所有项目保持在同一行 */
+}
+
 .nav a {
-  /* ... 其他样式保留 ... */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* 调整：使用新字体大小和更紧凑的间距，防止换行 */
   font-size: 16px; 
-  font-weight: 600;
+  font-weight: 600; 
   color: #333;
+  padding: 8px 12px; /* 减小左右内边距 */
+  margin-left: 8px; /* 减小外边距 */
   
-  /* 调整这里：减小左右间距 */
-  padding: 10px 15px; /* 原来是 22px，现在左右各减 7px */
-  margin-left: 8px;   /* 原来是 10px，稍微减小一点 */
-  
-  border-radius: 8px; /* 稍微减小圆角，显得更紧凑 */
-  transition: all 0.3s ease;
+  border-radius: 8px; /* 圆角设置 */
+  transition: all 0.3s ease; 
+  white-space: nowrap; /* 修复导航换行问题：确保文字不会被强制断开 */
 }
 
-  /* 1. 文字サイズを大きく (14px -> 16px) */
-  font-size: 16px; 
-  font-weight: 600; /* 少し太めにすると視認性が上がります */
-  color: #333;
-  
-  /* 2. 文字が大きくなった分、パディングを調整 */
-  padding: 10px 22px; 
-  margin-left: 10px;
-  
-  border-radius: 10px; /* 角丸も少し大きくして柔らかい印象に */
-  transition: all 0.3s ease;
-}
-
-/* 3. ホバー時の色を天ブルーに */
 .nav a:hover {
-  background-color: #87CEEB; /* 天ブルー */
-  color: #fff;
-  transform: translateY(-2px); /* ひょこっと浮く動き */
+  background-color: #87CEEB; /* 悬停效果：天蓝色 */
+  color: #fff;              
+  transform: translateY(-2px); /* 悬停时轻微上浮 */
+  box-shadow: 0 4px 12px rgba(135, 206, 235, 0.3); /* 淡淡的蓝色阴影 */
 }
-
-/* ロゴ横のテキストも少し大きくする場合 */
-.logo a span {
-  font-size: 22px; /* ロゴの文字サイズも調整 */
-  font-weight: 700;
-  color: #222;
-}
-
 
 /* =========================
-   Logo 样式
+   Logo 样式 (未修改)
 ========================= */
 .logo {
   margin: 0;
@@ -103,11 +86,14 @@ a {
   image-rendering: -webkit-optimize-contrast;
 }
 
+.logo a span {
+  font-size: 20px; /* 保持在合理大小 */
+  font-weight: 700;
+  color: #222;
+}
+
 /* =========================
-   Hero 呼吸动画版
-========================= */
-/* =========================
-   Hero 呼吸动画版 (靠左对齐新版)
+   Hero 呼吸动画版 (已修改为左对齐，并确保图片路径存在)
 ========================= */
 .hero {
   height: 90vh;
@@ -115,42 +101,59 @@ a {
   position: relative;
   display: flex;
   align-items: center;
-  /* 1. 关键修改：取消水平居中，改为靠左对齐 */
+  /* 修改：取消水平居中，改为靠左对齐 */
   justify-content: flex-start; 
-  /* 2. 关键修改：添加左右各 10% 的内边距，与 .section 对齐 */
+  /* 修改：添加左右各 10% 的内边距，与 .section 对齐 */
   padding: 0 10%; 
-  
-  /* text-align: center;  <-- 请删除或注释掉这一行，因为它会导致文字内部居中 */
+  /* text-align: center; <-- 删除 */
   background-color: #f9f9f9;
 }
 
-/* 确保文字在容器内左对齐 */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3)), 
+              /* 确保图片路径在这里 */
+              url("/morisawa5628/images/hero1.jpg"); 
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+  animation: heroZoom 15s infinite alternate ease-in-out;
+}
+
+@keyframes heroZoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.1); }
+}
+
 .hero-text {
   position: relative;
   z-index: 2;
   max-width: 800px;
-  /* padding: 0 20px; <-- 请删除或注释掉这一行，因为外层 .hero 已经有了 10% 的 padding */
-  
-  /* 3. 关键修改：确保文字本身靠左对齐 */
+  /* padding: 0 20px; <-- 删除 */
+  /* 修改：确保文字本身靠左对齐 */
   text-align: left; 
 }
 
-/* 4. 调整 H2 和 P 标签，确保它们继承左对齐 */
 .hero-text h2 {
-  /* ... 保留你的字体大小、间距等样式 ... */
-  text-align: left;
+  font-size: 42px;
+  letter-spacing: 0.1em;
+  margin-bottom: 24px;
+  color: #fff;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  text-align: left; /* 确保 H2 左对齐 */
 }
 
 .hero-text p {
-  /* ... 保留你的字体大小、颜色等样式 ... */
-  text-align: left;
+  font-size: 18px;
+  color: #fff;
+  opacity: 0.9;
+  text-align: left; /* 确保 P 左对齐 */
 }
 
-/* @keyframes heroZoom 动画及其他样式保持不变 */
-
-
 /* =========================
-   Section 交叉布局 (左字右图 / 左图右字)
+   Section 交叉布局 (左字右图 / 左图右字) (未修改)
 ========================= */
 .section {
   padding: 120px 10%;
@@ -219,7 +222,7 @@ a {
 }
 
 /* =========================
-   其他通用组件 (Table, Button, Form)
+   其他通用组件 (Table, Button, Form) (未修改)
 ========================= */
 .company-table {
   border-collapse: collapse;
@@ -285,7 +288,7 @@ a {
 }
 
 /* =========================
-   Footer
+   Footer (未修改)
 ========================= */
 .footer {
   padding: 60px 0;
@@ -296,7 +299,7 @@ a {
 }
 
 /* =========================
-   动画与移动端适配
+   动画与移动端适配 (未修改)
 ========================= */
 .fade-up {
   opacity: 0;
