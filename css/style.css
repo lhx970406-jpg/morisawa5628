@@ -164,6 +164,12 @@ a {
 .section {
   padding: 120px 10%;
 }
+/* 中间内容容器（用于 Mission / Service 这种不要铺满的区块） */
+.container {
+  max-width: 1200px;   /* 控制内容最大宽度 */
+  margin: 0 auto;      /* 居中 */
+  padding: 0 20px;     /* 手机端防止贴边 */
+}
 
 .content-row {
   display: flex;
