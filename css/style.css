@@ -145,11 +145,12 @@ a {
   text-align: left; /* 确保 H2 左对齐 */
 }
 
-.hero-text p {
-  font-size: 18px;
-  color: #fff;
-  opacity: 0.9;
-  text-align: left; /* 确保 P 左对齐 */
+.hero-text {
+  position: relative;
+  z-index: 2;
+  max-width: none;   /* ← 删除宽度限制 */
+  width: 100%;
+  text-align: left;
 }
 
 /* =========================
